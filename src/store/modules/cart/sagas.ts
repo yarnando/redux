@@ -1,11 +1,11 @@
 import { all, select, takeLatest } from "redux-saga/effects";
 import { IState } from "../..";
-import { addProductToCart } from "./actions";
+import { addProductToCartRequest } from "./actions";
 // takeLatest => cancela a ação feita anteriormente e faz uma nova (evita que o usuario clique e chame a api varias vezes)
 // takeEvery => dispara a ação sempre e espera todas
 // takeLeading => pega só a primeira ação, ignora as proximas ate essa primeira acabar
 
-type CheckProductStockRequest = ReturnType<typeof addProductToCart>
+type CheckProductStockRequest = ReturnType<typeof addProductToCartRequest>
 
 function* checkProductStock({ payload }: CheckProductStockRequest) {
     const { product } = payload;
@@ -19,5 +19,5 @@ function* checkProductStock({ payload }: CheckProductStockRequest) {
 }
 
 export default all([
-    takeLatest('ADD_PRODUCT_TO_CART', checkProductStock)
+    takeLatest('ADD_PRODUCT_TO_CART_REQUEST', checkProductStock)
 ])
