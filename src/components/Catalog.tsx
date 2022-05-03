@@ -13,7 +13,7 @@ export default function Catalog() {
 		api.get('products').then(response => {
 			setCatalog(response.data)
 		})
-	})
+	}, [])
 
 	const handleAddProductToCart = useCallback( (product: IProduct) => {
 		dispatch(addProductToCart(product))
