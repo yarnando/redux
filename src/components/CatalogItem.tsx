@@ -7,9 +7,9 @@ interface CatalogItemProps {
     product: IProduct;
 }
 
-const dispatch = useDispatch();
 
 export default function CatalogItem({ product }: CatalogItemProps) {
+    const dispatch = useDispatch();
 
     const handleAddProductToCart = useCallback( () => {
         dispatch(addProductToCart(product))
