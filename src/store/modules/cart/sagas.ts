@@ -3,6 +3,7 @@ import { IState } from "../..";
 import api from "../../../services/api";
 import { AxiosResponse } from "axios";
 import { addProductToCartFailure, addProductToCartRequest, addProductToCartSuccess } from "./actions";
+import { ActionTypes } from "./types";
 // takeLatest => cancela a ação feita anteriormente e faz uma nova (evita que o usuario clique e chame a api varias vezes)
 // takeEvery => dispara a ação sempre e espera todas
 // takeLeading => pega só a primeira ação, ignora as proximas ate essa primeira acabar
@@ -32,5 +33,5 @@ function* checkProductStock({ payload }: CheckProductStockRequest) {
 }
 
 export default all([
-    takeLatest('ADD_PRODUCT_TO_CART_REQUEST', checkProductStock)
+    takeLatest(ActionTypes.addProductToCartRequest, checkProductStock)
 ])
